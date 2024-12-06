@@ -1,0 +1,35 @@
+<div
+  class="font-montserrat fixed inset-0 flex flex-col items-center justify-center bg-black z-50 gap-6"
+>
+  <div
+    class="w-[75vw] flex flex-col items-center justify-center text-center bg-bg_card rounded-[10vw] p-6 text-white border-2 border-secondary/90 gap-3"
+  >
+    <h1 class="font-semibold text-sm">
+      Do you use any implanted health devices inc; Pacemakers, Hearing Aids,
+      IUDs etc?
+    </h1>
+    <div class="text-xs space-y-4">
+      <p>
+        If you answer 'YES' to this question, for your health & safety, the
+        <span class="text-[#E276ED]">PEMF THERAPY</span> will be disabled within
+        any selected session that features this component.
+      </p>
+      <p>
+        You can still enjoy the benefits of the additional components with no
+        settings limitations.
+      </p>
+      <p>
+        For more information, when closing this popup, the Terms & Conditions'
+        field will highlight the associated information section within our
+        'Health & Safety' Policy.
+      </p>
+    </div>
+  </div>
+
+  <button
+    class="w-14 p-3 border-2 border-secondary rounded-full transition-all duration-300 focus:scale-90 active:scale-90"
+    (click)="goBack()"
+  >
+    <img [src]="closeButton" alt="" />
+  </button>
+</div>

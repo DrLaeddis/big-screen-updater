@@ -1,0 +1,64 @@
+<div 
+  *ngIf="stopDoorAnimation"
+  class="w-screen h-screen bg-transparent absolute pointer-events-none z-50">
+  <app-door
+    [isClose]="doorClosed"
+  ></app-door>
+</div>
+
+<app-layout [backgroundImage]="'background-image'">
+  <div class="w-[85%] h-full flex flex-col items-center justify-center gap-10 ">
+    <!-- * Regenesis Logo -->
+    <img class="w-[70%] mb-10" [src]="logo" alt="Regenesis Logo" />
+
+    <!-- * Self Development Title -->
+    <h1
+      class="uppercase text-6xl tracking-widest text-secondary font-medium mb-20"
+    >
+      Self Development
+    </h1>
+
+    <!-- * Environtments -->
+    <div class="relative w-full flex flex-col items-center justify-center z-0">
+      <img [src]="matrix" class="absolute w-[60vw] -translate-y-28 z-0" />
+      <!-- Guided Meditation, Guided Breathwork, Sound Healing -->
+      <div
+        class="w-full grid grid-cols-2 items-center justify-center z-10 gap-6"
+      >
+        <app-environment
+          *ngFor="let environment of environments; let i = index"
+          [environmentLabel]="environment.label"
+          [environmentIcon]="environment.icon"
+          [environmentColor]="environment.color"
+          (click)="environment.clickHandler()"
+          [ngClass]="{ 'col-span-2 place-self-center': isLastOdd(i) }"
+        ></app-environment>
+      </div>
+    </div>
+
+    <!-- * Button Customize Your Environment -->
+    <div
+      class="w-full flex flex-row items-center justify-center gap-6 translate-x-4 mt-6"
+    >
+      <app-button
+        [buttonName]="'Customize Your Environment'"
+        [textSize]="'text-3xl'"
+        [paddingX]="'px-8'"
+        [paddingY]="'py-6'"
+        [borderSize]="'border-4'"
+        (click)="customizeYourEnvironment()"
+      ></app-button>
+      <button>
+        <img class="w-12" [src]="information" alt="Preset Information" />
+      </button>
+    </div>
+
+    <!-- * Home button -->
+    <button
+    (click)="gotoHome()"
+      class="w-32 h-32 flex items-center justify-center border-4 border-secondary rounded-full duration-300 active:border-primary"
+    >
+      <img class="w-[60%]" [src]="homeButton" alt="" />
+    </button>
+  </div>
+</app-layout>

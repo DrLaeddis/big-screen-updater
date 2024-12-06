@@ -1,0 +1,57 @@
+{
+  "$schema": "https://schema.tauri.app/config/1",
+  "build": {
+    "beforeDevCommand": "npm run start",
+    "beforeBuildCommand": "npm run build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist/big-screen/browser"
+  },
+  "package": {
+    "productName": "big-screen",
+    "version": "0.1.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "fs": {
+        "all": false,
+        "readFile": true,
+        "writeFile": false,
+        "readDir": false,
+        "scope": ["C:\\dummy\\regenesis\\mobileApi\\tokens"]
+      }
+    },
+    "windows": [
+      {
+        "title": "big-screen",
+        "width": 1034,
+        "height": 900,
+        "resizable": true
+      }
+    ],
+    "security": {
+      "csp": null
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "identifier": "com.big-screen.app",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ]
+    },
+    "updater": {
+      "active": true,
+      "dialog": true,
+      "endpoints": ["https://github.com/DrLaeddis/big-screen-updater/releases/latest"],
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDc2NjIzQjVDQzgyNjM1MTMKUldRVE5TYklYRHRpZHJDZGRtOTFJblNVSFdrUHlaajBybkdCRXQvQXU2ZnpoV1YvOThRRGpOcWkK",
+      "windows": {
+        "installMode": "passive",
+        "installerArgs": []
+      }
+    }
+  }
+}

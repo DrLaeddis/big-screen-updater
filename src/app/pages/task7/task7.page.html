@@ -1,0 +1,79 @@
+<div class="w-screen h-screen bg-transparent absolute pointer-events-none">
+  <app-door
+    [isClose]="doorClosed"
+    (transitionEnded)="onDoorTransitionEnd($event)"
+  ></app-door>
+</div>
+
+
+<app-layout [backgroundImage]="'background-image'">
+  <div class="w-[85%] h-full flex flex-col items-center pt-[20vh] gap-28">
+    <!-- * Logo -->
+    <img class="w-[80%]" [src]="logo" alt="Regenesis Logo" />
+
+    <!-- * Resonant Energetics -->
+    <h1 class="text-primary tracking-widest text-5xl">
+      <span class="text-secondary/80">R</span>ESONANT
+      <span class="text-secondary/80">E</span>NERGETICS
+    </h1>
+
+    <h1>
+      <span class="text-secondary/80">Testing {{ jwtToken }}</span>
+    </h1>
+
+    <!-- ! Button -->
+    <div class="w-full flex flex-col justify-center items-center gap-12">
+      <!-- * Session Mode -->
+      <app-button
+        class="w-full"
+        [buttonName]="'Session Mode'"
+        [textSize]="'text-5xl'"
+        [paddingY]="'py-16'"
+        [borderSize]="'border-8'"
+        [disabled]="doorClosed"
+        (click)="doorClosed ? null : sessionMode()"
+      ></app-button>
+
+      <!-- * Work Rest Play -->
+      <app-button
+        class="w-full"
+        [buttonName]="'Work Rest Play'"
+        [textSize]="'text-5xl'"
+        [paddingY]="'py-16'"
+        [borderSize]="'border-8'"
+        [disabled]="doorClosed"
+        (click)="doorClosed ? null : workRestPlay()"
+      ></app-button>
+
+      <!-- * Self Development -->
+      <app-button
+        class="w-full"
+        [buttonName]="'Self Development'"
+        [textSize]="'text-5xl'"
+        [paddingY]="'py-16'"
+        [borderSize]="'border-8'"
+        [disabled]="doorClosed"
+        (click)="doorClosed ? null : selfDevelopment()"
+      ></app-button>
+
+      <!-- * Training Mode -->
+      <app-button
+        class="w-full"
+        [buttonName]="'Training Mode'"
+        [textSize]="'text-5xl'"
+        [paddingY]="'py-16'"
+        [borderSize]="'border-8'"
+        [disabled]="doorClosed"
+        (click)="doorClosed ? null : trainingMode()"
+      ></app-button>
+    </div>
+
+    <button
+      class="w-[20vw] h-[20vw] flex p-8 border-8 border-secondary rounded-full"
+    >
+      <img [src]="gear" alt="Setting Logo" />
+    </button>
+  </div>
+</app-layout>
+
+<app-loading *ngIf="loading"></app-loading>

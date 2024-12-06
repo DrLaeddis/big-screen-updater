@@ -1,0 +1,51 @@
+<div class="w-screen h-screen bg-transparent absolute pointer-events-none">
+  <app-door
+    [isClose]="doorClosed"
+    (transitionEnded)="onDoorTransitionEnd($event)"
+  ></app-door>
+</div>
+
+<app-layout>
+  <div
+    class="w-[85%] h-full flex flex-col items-center pt-[25vh] gap-44 "
+    [ngClass]="{ 'pointer-events-none': doorClosed }"
+  >
+    <!-- * Logo -->
+    <img class="w-[80%]" [src]="logo" alt="Regenesis Logo" />
+
+    <div class="w-full flex flex-col justify-center items-center gap-12">
+      <!-- * Regenesis Full Mode -->
+      <!-- <app-button
+        class="w-full"
+        [buttonName]="'REGENESIS FULL MODE'"
+        [buttonType]="'submit'"
+        (buttonClick)="regenesisFullMode()"
+      ></app-button> -->
+      <app-button
+        class="w-full"
+        [buttonName]="'Regenesis Full Mode'"
+        [textSize]="'text-5xl'"
+        [paddingY]="'py-16'"
+        [borderSize]="'border-8'"
+        [disabled]="doorClosed"
+        (click)="doorClosed ? null : regenesisFullMode()"
+      ></app-button>
+      <!-- * Regenesis Lite Mode -->
+      <!-- <app-button
+        class="w-full"
+        [buttonName]="'REGENESIS LITE MODE'"
+        [buttonType]="'submit'"
+        (buttonClick)="regenesisLiteMode()"
+      ></app-button> -->
+      <app-button
+        class="w-full"
+        [buttonName]="'Regenesis Lite Mode'"
+        [textSize]="'text-5xl'"
+        [paddingY]="'py-16'"
+        [borderSize]="'border-8'"
+         [disabled]="doorClosed"
+        (click)="doorClosed ? null : regenesisLiteMode()"
+      ></app-button>
+    </div>
+  </div>
+</app-layout>

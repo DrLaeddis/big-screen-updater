@@ -1,0 +1,23 @@
+<div
+  class="relative w-full bg-black border-2 border-white rounded-full cursor-pointer text-black text-[0.6rem] font-normal uppercase p-[0.2rem]"
+  (click)="toggleSwitch()"
+>
+  <div
+    class="absolute inset-0 w-full flex items-center justify-between text-center z-0 rounded-full p-[0.2rem]"
+  >
+    <div
+      class="w-full h-full flex flex-row items-center justify-between rounded-full transition-color duration-300"
+      [ngClass]="isOn ? 'bg-blue-500 text-white' : 'bg-white text-black'"
+    >
+      <p class="w-1/2">{{ onLabel }}</p>
+      <p class="w-1/2">{{ offLabel }}</p>
+    </div>
+  </div>
+
+  <div
+    class="w-[50%] rounded-full transform transition-transform duration-300 text-center p-1"
+    [ngClass]="isOn ? 'translate-x-0 bg-white text-black' : 'translate-x-full bg-blue-500 text-white'"
+  >
+    <span>{{ isOn ? onLabel : offLabel }}</span>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<!-- Door with condition already opened "isDoorClosed = false" -->
+<div
+  *ngIf="isDoorClosed"
+  class="w-screen h-screen bg-transparent absolute pointer-events-none z-50"
+>
+  <app-door [isClose]="doorClosed" (transitionEnded)="onDoorTransitionEnd($event)"></app-door>
+</div>
+
+<!-- Main -->
+<app-layout>
+  <div class="flex flex-col w-full items-center justify-center gap-20">
+    <div
+      class="w-[75%] rounded-[15vw] flex flex-col justify-center items-center text-center bg-bg_card/50 border-secondary/50 border-8 gap-14 py-20"
+    >
+      <!--  Logo -->
+      <div
+        class="w-[35vw] h-[35vw] flex justify-center items-center bg-black border-8 border-secondary/50 rounded-full relative"
+      >
+        <img [src]="icon" class="w-[65%]" />
+        <button
+          class="absolute right-0 top-0 translate-x-1 -translate-y-1 z-10 transition-all duration-200 focus:scale-95"
+          (click)="openInformation()"
+        >
+          <img [src]="informationIcon" alt="" class="w-16" />
+        </button>
+      </div>
+
+      <h1 class="text-3xl">Select the Session Duration</h1>
+
+      <!--  Select session duration -->
+      <div class="flex flex-row space-x-4">
+        <label
+          *ngFor="let time of timeOptions"
+          class="flex flex-col items-center text-3xl gap-5"
+          [ngClass]="selectedTime === time ? 'transition-colors duration-100 text-primary' : 'text-secondary'"
+        >
+          <input
+            type="radio"
+            name="time"
+            [value]="time"
+            (change)="onTimeChange(time)"
+            [checked]="selectedTime === time"
+            class="w-10 h-10 appearance-none bg-transparent checked:text-blue-500 border-2 border-secondary outline-none cursor-pointer"
+          />
+          {{ time }} minutes
+        </label>
+      </div>
+
+      <!--  Settings -->
+      <button
+        class="w-[15vw] h-[15vw] flex p-6 border-8 border-secondary/50 rounded-full"
+      >
+        <img [src]="gear" alt="Setting Logo" />
+      </button>
+
+      <!--  Confirm start -->
+      <app-button
+        [buttonName]="'Confirm Start'"
+        [buttonType]="'button'"
+        [textColor]="'text-primary'"
+        [borderSize]="'border-4'"
+        [paddingX]="'px-16'"
+        (click)="confirmStart()"
+      ></app-button>
+    </div>
+
+    <!-- Button back to task8 -->
+    <button
+      class="p-10 border-2 border-secondary rounded-full transition-all duration-300 focus:scale-90 active:scale-90"
+      (click)="goBack()"
+    >
+      <img [src]="closeButton" alt="" class="w-22"/>
+    </button>
+  </div>
+</app-layout>
+
+<!-- Modal information -->
+<app-modal-information
+  *ngIf="showInformation"
+  (closeModal)="closeInformation()"
+></app-modal-information>
+
+<!-- Loading effect -->
+<app-loading *ngIf="loading"></app-loading>

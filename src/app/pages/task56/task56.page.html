@@ -1,0 +1,141 @@
+<div
+*ngIf="stopDoorAnimation"
+class="w-screen h-screen bg-transparent absolute pointer-events-none z-50">
+  <app-door
+  [isClose]="doorClosed"
+  ></app-door>
+</div>
+
+<app-layout [backgroundImage]="'background-image'">
+  <div class="w-[85%] h-full flex flex-col items-center justify-center gap-10">
+    <!-- * Regenesis Logo -->
+    <img class="w-[70%]" [src]="regenesisLogo" alt="Regenesis Logo" />
+
+    <!-- * Title -->
+    <h1
+      class="uppercase text-5xl tracking-widest text-secondary font-medium my-5"
+    >
+      Guided Breathwork
+    </h1>
+
+    <!-- * Track List -->
+    <div
+      class="w-full flex flex-col items-center justify-center border-4 border-secondary rounded-[3rem] p-10 gap-8"
+    >
+      <!-- * Tab Title -->
+      <div
+        class="w-full flex flex-row items-center justify-center gap-4 text-3xl"
+      >
+        <!-- * Session Library -->
+        <button
+          class="w-1/2 flex flex-row items-center justify-center border-b-8 transition-all duration-300 pb-5"
+          (click)="selectTab('sessionLibrary')"
+          [class]="selectedTab === 'sessionLibrary' ? 'text-primary border-primary' : 'text-secondary border-transparent '"
+        >
+          Session Library
+        </button>
+        <!-- * Favorites -->
+        <button
+          class="w-1/2 flex flex-row items-center justify-center border-b-8 transition-all duration-300 pb-3 gap-5"
+          (click)="selectTab('favorites')"
+          [class]="selectedTab === 'favorites' ? 'text-primary border-primary' : 'text-secondary border-transparent '"
+        >
+          Favorites
+          <!-- * Heart logo -->
+          <img
+            class="w-8"
+            [src]="selectedTab === 'favorites' ? favoriteChecked : favoriteUnchecked"
+            alt="Favorite Icon"
+          />
+        </button>
+      </div>
+
+      <!-- * Content -->
+      <!-- * Session Library -->
+      <ng-container *ngIf="selectedTab === 'sessionLibrary'; else favorites">
+        <div
+          class="w-full h-[15vh] overflow-y-scroll scroll-smooth flex flex-col gap-4"
+        >
+          <app-track-item
+            *ngFor="let track of trackList; let i = index"
+            [track]="track"
+            [isFavorite]="track.isFavorite"
+            [isCountdownActive]="activeCountdownIndex !== null && activeCountdownIndex !== i"
+            (countdownStatusChanged)="handleCountdownStatus($event, i)"
+            (favoriteToggled)="toggleFavorite(track, x[i])"
+            (trackSelected)="selectedTrack(track)"
+            [selected]="track.sound_code === selectedTrackSoundCode"
+          ></app-track-item>
+        </div>
+      </ng-container>
+
+      <!-- * Favorites -->
+      <ng-template #favorites>
+        <div
+          class="w-full h-[15vh] overflow-y-scroll scroll-smooth flex flex-col gap-4"
+        >
+          <app-track-item
+            *ngFor="let track of favoritesList; let i = index"
+            [track]="track"
+            [isFavorite]="true"
+            [isCountdownActive]="activeCountdownIndex !== null && activeCountdownIndex !== i"
+            (countdownStatusChanged)="handleCountdownStatus($event, i)"
+            (favoriteToggled)="toggleFavorite(track, x[i])"
+            (trackSelected)="selectedTrack(track)"
+            [selected]="track.sound_code === selectedTrackSoundCode"
+          ></app-track-item>
+        </div>
+      </ng-template>
+    </div>
+
+    <!-- * Button: Customize Your Environment -->
+    <div
+      class="w-full flex flex-row items-center justify-center gap-6 translate-x-6"
+    >
+      <app-button
+        [buttonName]="'Customize Your Environment'"
+        [textSize]="'text-3xl'"
+        [paddingX]="'px-8'"
+        [paddingY]="'py-6'"
+        [borderSize]="'border-4'"
+        (click)="customizeYourEnvironment()"
+      ></app-button>
+
+      <!-- Information -->
+      <button class="duration-300 active:scale-90">
+        <img
+          class="w-12 active:scale-90 duration-300"
+          [src]="information"
+          alt="Preset Information"
+        />
+      </button>
+    </div>
+
+    <!-- * Button: Start Session -->
+    <app-button
+      class="w-[70%]"
+      [buttonName]="'Start Session'"
+      [textSize]="'text-4xl'"
+      [borderSize]="'border-4'"
+      (click)="playWRP()"
+    ></app-button>
+
+    <!-- * Button: Back & Home -->
+    <div class="w-full flex flex-row items-center justify-center gap-6">
+      <!-- Back button -->
+      <button
+        class="w-28 h-28 flex items-center justify-center border-4 border-secondary rounded-full duration-300 active:border-primary"
+        (click)="backToSelecSelfDev()"
+      >
+        <img class="w-20" [src]="backButton" alt="" />
+      </button>
+      <!-- Home button -->
+      <button
+      (click)="gotoHome()"
+        class="w-28 h-28 flex items-center justify-center border-4 border-secondary rounded-full duration-300 active:border-primary"
+      >
+        <img class="w-16" [src]="homeButton" alt="" />
+      </button>
+    </div>
+  </div>
+</app-layout>

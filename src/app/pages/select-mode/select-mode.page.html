@@ -1,0 +1,25 @@
+<div class="w-screen h-screen flex justify-center items-center bg-base">
+    <div
+      class="w-[90vw] h-[90vh] bg-black flex flex-col justify-center items-center rounded-[30vh] px-8"
+    >
+      <img [src]="logo" class="w-[40vw]" />
+      <img [src]="logo_text" class="w-[60vw] my-8" />
+      <div class="flex flex-col gap-2 w-[60vw]">
+        <button class="w-full flex justify-center py-2 border-2 border-bg_card bg-bg_card bg-opacity-15 rounded-full"
+         (click)="handleClickSession()"
+        >
+            <h2 class="text-white">SESSION MODE</h2>
+        </button>
+        <button class="w-full flex justify-center py-2 border-2 border-bg_card bg-bg_card bg-opacity-15 rounded-full">
+            <h2 class="text-white">WORK REST PLAY</h2>
+        </button>
+        <button class="w-full flex justify-center py-2 border-2 border-bg_card bg-bg_card bg-opacity-15 rounded-full">
+            <h2 class="text-white">SELF DEVELOPMENT</h2>
+        </button>
+        <button class="w-full flex justify-center py-2 border-2 border-bg_card bg-bg_card bg-opacity-15 rounded-full">
+            <h2 class="text-white">TRAINING MODE</h2>
+        </button>
+      </div>
+    </div>
+  </div>
+  

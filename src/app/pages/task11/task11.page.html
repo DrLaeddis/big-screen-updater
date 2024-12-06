@@ -1,0 +1,15 @@
+<div class="w-screen h-screen bg-transparent absolute pointer-events-none">
+  <app-door [isClose]="doorClosed"></app-door>
+</div>
+
+<div *ngIf="videoStarted" class="relative w-full h-full">
+  <video
+    #videoPlayer
+    class="w-full h-full object-cover"
+    [muted]="true"
+    [controls]="false"
+    (ended)="onVideoEnd()"
+  >
+    <source src="sample.mp4" type="video/mp4" />
+  </video>
+</div>

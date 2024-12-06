@@ -1,0 +1,10 @@
+<div (click)="handleClick()" class="w-screen h-screen">
+  <div
+    [ngClass]="{
+      'w-screen h-screen transition-opacity duration-300 ease-in-out': true,
+      'opacity-0': is_off,
+    }"
+  >
+    <app-door-opening [open]="!is_off"></app-door-opening>
+  </div>
+</div>

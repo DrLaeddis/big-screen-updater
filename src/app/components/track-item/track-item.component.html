@@ -1,0 +1,67 @@
+<div
+  class="w-full h-full flex flex-row items-center justify-between border-4 rounded-full py-5 px-3 bg-secondary/20"
+  [ngClass]="{ 'border-primary': selected, 'border-secondary': !selected }"
+  (click)="selectTrack()"
+>
+  <!-- * Left side: Track title, Track author -->
+  <div class="w-1/2 flex flex-col text-center px-5">
+    <!-- * Track title -->
+    <h3 class="text-xl tracking-wide">{{ track.title }}</h3>
+    <!-- * Track author -->
+    <p class="text-lg italic text-secondary">
+      By: <span>{{ track.caption }}</span>
+    </p>
+  </div>
+
+  <!-- * Divider -->
+  <hr class="border-2 border-secondary h-[90%]" />
+
+  <!-- * Right side: Track duration, Play sample button, Favorite -->
+  <div class="w-1/2 flex flex-row items-center justify-between px-5">
+    <!-- * Track Duration -->
+    <div
+      class="w-fit flex flex-col items-center justify-center leading-none gap-2"
+    >
+      <h3 class="text-md">Track Duration</h3>
+      <p class="text-4xl">{{ track.duration }}</p>
+    </div>
+    <!-- * Play sample button -->
+    <button class="w-14 active:scale-90 duration-300 relative flex items-center" alt="Play Sample"
+    (click)="handlePreview($event)"
+    [disabled]="isCountdownActive"
+    [disabled]="isPlaying"
+    >
+      <img [src]="playSample" alt="" />
+      <div class="bg-[#116031] absolute w-full h-[50px] flex items-center justify-start pl-[11px]"
+      style="clip-path: polygon(0 0, 100% 50%, 0 100%);"
+      *ngIf="countdown > 0"
+      >
+      {{ countdown }}
+      </div>
+    </button>
+
+    <!-- * Favorite and Information button -->
+    <div class="w-fit flex flex-col items-start justify-center gap-2">
+      <!-- * Information button -->
+      <button class="duration-300 active:scale-90">
+        <img
+          class="w-8 active:scale-90 duration-300"
+          [src]="information"
+          alt="Preset Information"
+        />
+      </button>
+      <!-- * Favorite button -->
+      <button
+        class="duration-300 active:scale-90"
+        (click)="handleFavorite(); $event.stopPropagation()"
+      >
+        <img
+          class="w-8 transition-transform duration-300 ease-in-out"
+          [ngClass]="{ 'scale-110': isFavorite }"
+          [src]="isFavorite ? favoriteChecked : favoriteUnchecked"
+          alt="Favorite Icon"
+        />
+      </button>
+    </div>
+  </div>
+</div>

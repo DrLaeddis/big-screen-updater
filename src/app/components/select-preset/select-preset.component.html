@@ -1,0 +1,38 @@
+<div class="w-full flex flex-row items-center justify-between gap-2">
+  <!-- Button Left -->
+  <button (click)="prevPreset()">
+    <img
+      class="w-3 duration-500 active:scale-75"
+      [src]="leftArrow"
+      alt="Left Arrow"
+    />
+  </button>
+  <!-- Preset List -->
+
+  <div class="w-full overflow-hidden">
+    <ul
+      class="w-full overflow-x-auto snap-x scroll-smooth no-scrollbar flex flex-row items-center text-[0.7rem] font-semibold gap-5"
+    >
+      <li
+        *ngFor="let preset of presets; let i = index; trackBy: trackByFn"
+        (click)="selectPreset(i)"
+        class="whitespace-nowrap snap-center cursor-pointer pb-2 border-b-2 transition-all duration-300"
+        [ngClass]="{
+          'border-primary text-primary': selectedPreset === i,
+          'border-transparent text-secondary': selectedPreset !== i
+        }"
+      >
+        {{ preset }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- Button Right -->
+  <button (click)="nextPreset()">
+    <img
+      class="w-3 duration-500 active:scale-75"
+      [src]="rightArrow"
+      alt="Right Arrow"
+    />
+  </button>
+</div>

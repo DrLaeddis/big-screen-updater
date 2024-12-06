@@ -1,0 +1,22 @@
+<app-layout [backgroundImage]="'background-image'">
+  <!-- * Matrix -->
+  <img [src]="matrix" class="w-[50vw] absolute" />
+
+  <!-- * List -->
+  <div class="w-[80vw] flex justify-between items-center">
+    <ng-container *ngFor="let sessionGroup of sessionGroups">
+      <div class="flex flex-col items-center gap-3">
+        <ng-container *ngFor="let session of sessionGroup">
+          <app-session-item
+            [icon]="session.icon"
+            [size]="session.size"
+            [sessionType]="session.type"
+            (selectSession)="handleSelectSession($event)"
+          ></app-session-item>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</app-layout>
+
+<app-loading *ngIf="loading"></app-loading>

@@ -1,0 +1,16 @@
+<div class="h-screen overflow-hidden relative">
+  <img
+    [src]="leftDoor"
+    alt="Left Door"
+    class="bg-bg_card absolute left-0 h-full w-1/2 transition-transform duration-[3s] ease-linear"
+    [ngClass]="{ '-translate-x-full': !isClosed }"
+    (transitionend)="onTransitionEnd('left')"
+  />
+  <img
+    [src]="rightDoor"
+    alt="Right Door"
+    class="bg-bg_card absolute right-0 h-full w-1/2 transition-transform duration-[3s] ease-linear"
+    [ngClass]="{ 'translate-x-full': !isClosed }"
+    (transitionend)="onTransitionEnd('right')"
+  />
+</div>
