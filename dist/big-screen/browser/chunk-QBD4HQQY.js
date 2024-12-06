@@ -1,1 +1,0 @@
-import{Ja as a,W as o,Za as s}from"./chunk-WH7RZBSH.js";var p=(()=>{let e=class e{};e.\u0275fac=function(n){return new(n||e)},e.\u0275cmp=o({type:e,selectors:[["app-task1"]],standalone:!0,features:[s],decls:1,vars:0,consts:[[1,"w-screen","h-screen","bg-black"]],template:function(n,r){n&1&&a(0,"div",0)}});let t=e;return t})();export{p as Task1Page};

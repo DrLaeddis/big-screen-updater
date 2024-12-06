@@ -46,7 +46,7 @@
     "updater": {
       "active": true,
       "dialog": true,
-      "endpoints": ["https://github.com/DrLaeddis/big-screen-updater/releases/latest"],
+      "endpoints": ["https://github.com/DrLaeddis/big-screen-updater/releases/download/version-beta/big-screen_0.1.0_x64-setup.nsis.zip"],
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDc2NjIzQjVDQzgyNjM1MTMKUldRVE5TYklYRHRpZHJDZGRtOTFJblNVSFdrUHlaajBybkdCRXQvQXU2ZnpoV1YvOThRRGpOcWkK",
       "windows": {
         "installMode": "passive",
